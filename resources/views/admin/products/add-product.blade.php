@@ -7,6 +7,12 @@
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('/plugins/jquery-upload/image-uploader.min.css') }}">
+
+<style>
+    .ck-content {
+        height: 300px !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -227,11 +233,10 @@
                             <div class="row mb-0">
                                 <div class="form-group col-md-12">
                                     <label for="">Poetry In Jewelry</label>
-                                    <textarea name="poetry_in_jewelry" class="form-control @error('poetry_in_jewelry') is-invalid @enderror" maxlength="150" id="poetry_in_jewelry">{{ old('poetry_in_jewelry') }}</textarea>
+                                    <textarea name="poetry_in_jewelry" class="form-control textarea_data @error('poetry_in_jewelry') is-invalid @enderror" id="poetry_in_jewelry" cols="100" rows="100">{{ old('poetry_in_jewelry') }}</textarea>
                                     @error('poetry_in_jewelry')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
-                                    <small class=" float-right descriptions_count">150</small>
                                 </div>
                             </div>
 

@@ -57,7 +57,7 @@
 							<h3 class="text-uppercase text-gray">{{ $product->name }}</h3>
 						</div>	
 						<div class="mt-1 pr-3 content">	
-							<p class="text-gray addReadMore showlesscontent">{!! Str::limit($product->description, 130) !!}</p>	
+							<p class="text-gray addReadMore_del showlesscontent_del">{!! Str::limit($product->description, 300) !!}</p>	
 
 							<div class="select-size mt-4">
 
@@ -77,6 +77,7 @@
 							</div>
 						</div>
 
+						
 						<a href="{{ asset('documents/size-guide.pdf') }}" target="_blank" class="text-uppercase text-gray">size guide</a>
 
 						@if(count($product->attributes) > 0)
@@ -108,7 +109,16 @@
 					</div>	
 				</div>	
 			</div> 
+
+			@if(Str::length(strip_tags($product->description)) > 300)
+			<hr>
+			<div class="row">
+				<p class="text-gray addReadMore_del showlesscontent_del">{!! $product->description !!}</p>	
+			</div>
+			@endif
+
 		</div>
+
 	</section>
 
 	<section class="single-product-info bg-lightgray p-80">
@@ -117,7 +127,7 @@
 				<div class="col-md-5 ">
 					<h5 class="title text-gray text-uppercase mb-4">Poetry in Jewelry</h5>
 					<p class="text-gray sub-title pe-4">
-						{{  $product->poetry_in_jewelry ? $product->poetry_in_jewelry : 'No poetry in jewelry added'}}
+						{!!  $product->poetry_in_jewelry ? $product->poetry_in_jewelry : 'No poetry in jewelry added'!!}
 					</p>
 				</div>
 

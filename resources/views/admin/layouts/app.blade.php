@@ -67,7 +67,8 @@
     {{-- datepicker --}}
     <script src="{{ asset('plugins/datepicker/jquery.datetimepicker.full.min.js') }}"></script>
 
-    
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+
 
     <script src="{{asset('dashboard/js/script.js')}}"></script>
 
@@ -201,7 +202,18 @@
         @if(session()->has('error'))
         toastr.error('{{session()->get('error')}}');
         @endif
+
+
+        // ckeditor configs
+        let allEditors = document.querySelectorAll('.textarea_data');
+
+        for (let i = 0; i < allEditors.length; ++i) {
+            ClassicEditor.create(allEditors[i]);
+        }
+        
     </script>
+
+    
 </body>
 
 </html>
